@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Imvu Outfit Link Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #generated-link {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #generated-link a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Imvu Outfit Link Generator</h1>
+
+        <input type="text" id="userId" placeholder="Enter Imvu User ID">
+        <button onclick="generateLink()">Prepare Link</button>
+
+        <div id="generated-link"></div>
+    </div>
+
+    <script>
+        function generateLink() {
+            const userId = document.getElementById('userId').value.trim();
+            if (!userId) {
+                alert('Please enter a valid Imvu User ID');
+                return;
+            }
+
+            const baseUrl = 'imvu.com/outfits/index.php?just_this_user=';
+            const fullUrl = baseUrl + userId;
+
+            const linkElement = document.createElement('a');
+            linkElement.href = fullUrl;
+            linkElement.textContent = fullUrl;
+
+            const generatedLinkContainer = document.getElementById('generated-link');
+            generatedLinkContainer.innerHTML = 'Generated Link: ';
+            generatedLinkContainer.appendChild(linkElement);
+        }
+    </script>
+</body>
+</html>
